@@ -19,7 +19,7 @@ toastr.options.positionClass = 'toast-bottom-right';
 
 var scion = {
     record: {
-        new(customFunc) {
+        new() {
             record_id = null;
             
             if(module_type === "custom") {
@@ -40,7 +40,7 @@ var scion = {
             }
             else if(module_type === "settings") {
                 scion.create.modal('NEW RECORD', 'form').show();
-            } 
+            }
             
             actions = 'save';
             
@@ -184,17 +184,18 @@ var scion = {
                         });
                         return selected_dataProxy.employee;
                     }
+                    
+                    if(module_type === "custom") {
+                        if(lookup_type !== "sub") {
+                            scion.create.sc_modal(modal_content+"_form", "UPDATE " + page_title).show(modalShowFunction);
+                        }
+                    }
+                    else if(module_type === "transaction") {
+                    }
                 }
             });
             
             
-            if(module_type === "custom") {
-                if(lookup_type !== "sub") {
-                    scion.create.sc_modal(modal_content+"_form", "UPDATE " + page_title).show(modalShowFunction);
-                }
-            }
-            else if(module_type === "transaction") {
-            }
         },
         delete(generateDeleteItems) {
             
@@ -296,7 +297,7 @@ var scion = {
             }
             
             
-            table.clear().draw();
+            // table.clear().draw();
         },
         modal(title, type) {
             var modal = $('.custom-modal');
@@ -505,7 +506,7 @@ var scion = {
 }
 
 
-$('body').delegate('form input[type="text"], form textarea', 'keyup', function() {
+$('body').delegate('form input[type="text"]:not(.lowercase), form textarea', 'keyup', function() {
     this.value = this.value.toUpperCase();
 }).delegate('form', 'submit', function() {
     event.preventDefault();

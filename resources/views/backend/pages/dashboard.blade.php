@@ -122,6 +122,7 @@
 <script>
     $(function() {
         scion.centralized_button(true, true, true, true);
+
     });
 </script>
 @endsection

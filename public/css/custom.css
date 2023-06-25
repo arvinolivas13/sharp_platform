@@ -428,6 +428,16 @@ li.paginate_button a {
 
 .dataTable td {
     padding: 3px 10px;
+    border: 0px !important;
+}
+
+td.small_text {
+    text-transform: lowercase;
+}
+
+td.with-bg {
+    background: #a7abaf4a;
+    font-weight: bolder;
 }
 
 .dataTable tbody {
@@ -836,13 +846,12 @@ span.custom-modal-close {
 
 .sc-modal-header {
     padding: 10px 15px;
-    background: rgb(50 130 184);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
 }
 
 .sc-modal-header i {
-    color: #fff;
+    color: #6f6f6f;
 }
 
 .sc-modal-body {
@@ -859,7 +868,7 @@ span.sc-title-bar {
     font-weight: bold;
     text-transform: uppercase;
     display: inline-block;
-    color: #fff;
+    color: #3282b8;
     font-size: 12px;
 }
 

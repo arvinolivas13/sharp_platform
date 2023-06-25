@@ -21,6 +21,7 @@
     <script src="{{asset('/plugins/datatable/buttons.html5.min.js')}}" ></script>
     <script src="{{asset('/plugins/datatable/pdfmake.min.js')}}" ></script>
     <script src="{{asset('/plugins/datatable/vfs_fonts.js')}}" ></script>
+    <script src="https://furcan.github.io/IconPicker/dist/iconpicker-1.5.0.js"></script>
     @yield('scripts')
     @yield('styles')
     @yield('styles-2')

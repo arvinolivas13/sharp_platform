@@ -1,16 +1,16 @@
 <div class="row header-bar">
     <div class="col-12">
         <div class="action-button">
-            <button type="button" onclick="scion.record.new()" class="create" id="nw" >
+            <button type="button" onclick="scion.record.new()" class="create" id="nw" disabled>
                 <i class="fas fa-plus"></i> New
             </button>
-            <button type="submit" onclick="scion.record.save(generateData, success, error)" class="save" id="sv" >
+            <button type="submit" onclick="scion.record.save(generateData, success, error)" class="save" id="sv" disabled>
                 <i class="fas fa-save"></i> Save
             </button>
-            <button type="button" onclick="scion.record.delete(generateDeleteItems)" class="delete" id="dlt" >
+            <button type="button" onclick="scion.record.delete(generateDeleteItems)" class="delete" id="dlt" disabled>
                 <i class="fas fa-trash-alt"></i> Delete
             </button>
-            <button type="button" onclick="scion.print()" class="print" id="prnt" >
+            <button type="button" onclick="scion.print()" class="print" id="prnt" disabled>
                 <i class="fas fa-print"></i> Print
             </button>
             <span id="additional_buttons"></span>
