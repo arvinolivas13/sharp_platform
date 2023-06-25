@@ -37,7 +37,7 @@
                                 @endforeach
                             </ul>
                         @else
-                            <a href="" data-toggle="collapse" class="sidebar-link collapsed">
+                            <a href="/project/{{$app->code}}/{{$item->code}}" data-toggle="" class="sidebar-link collapsed">
                                 <span class="item">
                                     <i class="align-middle mr-2 fas fa-fw fa-{{$item->icon}}"></i> <span class="align-middle">{{$item->name}}</span>
                                 </span>

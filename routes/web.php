@@ -20,7 +20,8 @@ Route::group(['middleware' => ['auth']], function() {
 
     // Dynamic Routes
     Route::group(['prefix' => 'project'], function() {
-        Route::get         ('/{app_type}/{app}/{module}',       'Controller@index'                                              )->name('sample');
+        Route::get         ('/{app_type}/{app}/{module}',       'Controller@index'                                              )->name('app');
+        Route::get         ('/{app_type}/{app}',                'Controller@direct_app'                                         )->name('direct_app');
     });
 
     // Controller action
@@ -51,6 +52,10 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post         ('/update/{id}',                    'AppModuleController@update'                                    )->name('update');
             Route::post         ('/destroy',                        'AppModuleController@destroy'                                   )->name('delete');
             Route::get          ('/list/{id}',                      'AppModuleController@get_list'                                  )->name('list');
+        });
+        
+        Route::group(['prefix' => 'activity_log'], function() {
+            Route::get          ('/get/{date}',                     'Controller@log_get'                                            )->name('get');
         });
 
     });

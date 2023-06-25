@@ -1,0 +1,30 @@
+span.activity-title {
+    font-size: 12px;
+    font-weight: bold;
+    color: #0a5b91;
+    display: block;
+}
+
+span.activity-sub {
+    display: block;
+    font-family: lucida console !important;
+    color: black !important;
+}
+
+span.activity-sub b{
+    font-weight: bold !important;
+}
+
+span.activity-date {
+    float: right;
+    color: gray;
+    font-weight: bold;
+}
+
+.filter {
+    margin-bottom: 12px;
+}
+
+div#activity_log_table_filter {
+    float: right;
+}

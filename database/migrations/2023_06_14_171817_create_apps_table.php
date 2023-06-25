@@ -63,6 +63,16 @@ class CreateAppsTable extends Migration
                 'module' => 1,
                 'created_by' => 1,
                 'updated_by' => 1,
+            ],
+            [
+                'name' => 'ACTIVITY LOGS', 
+                'code' => 'activity_logs', 
+                'status' => 0,
+                'sort_no' => 2,
+                'app_type_id' => 3,
+                'module' => 0,
+                'created_by' => 1,
+                'updated_by' => 1,
             ]
         ]);
         

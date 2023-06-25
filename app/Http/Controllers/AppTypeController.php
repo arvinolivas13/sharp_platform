@@ -5,9 +5,16 @@ namespace App\Http\Controllers;
 use App\AppType;
 use Illuminate\Http\Request;
 use Auth;
+use App\Http\Controllers\Controller;
 
 class AppTypeController extends Controller
 {   
+    protected $func;
+
+    public function __construct() {
+        $this->setup = new Controller();
+    }
+
     public function get() {
         if(request()->ajax()) {
             return datatables()->of(AppType::get())
@@ -20,7 +27,7 @@ class AppTypeController extends Controller
     {
         $validate = $request->validate([
             'name' => 'required',
-            'code' => 'required|unique:app_types',
+            'code' => 'required|unique:app_types,deleted_at,NULL',
             'sort_no' => 'required',
         ]);
 
@@ -29,6 +36,7 @@ class AppTypeController extends Controller
         $request['updated_by'] = Auth::user()->id;
 
         AppType::create($request->all());
+        $this->setup->set_log('App Type Inserted', '"'.$request->name.'" was added at App Type Records.', $request->ip());
 
         return response()->json(compact('validate'));
     }
