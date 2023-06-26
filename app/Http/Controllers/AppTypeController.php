@@ -36,7 +36,7 @@ class AppTypeController extends Controller
         $request['updated_by'] = Auth::user()->id;
 
         AppType::create($request->all());
-        $this->setup->set_log('App Type Inserted', '"'.$request->name.'" was added at App Type Records.', $request->ip());
+        $this->setup->set_log('App Type Added', '"'.$request->name.'" was added at App Type Records.', $request->ip());
 
         return response()->json(compact('validate'));
     }

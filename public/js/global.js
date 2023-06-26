@@ -487,7 +487,8 @@ var scion = {
         return (neg ? "-₱ " : '₱ ') + parseFloat(total, 10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, "$1,").toString();
     },
     print() {
-        var divContents = document.getElementById(selected_print).innerHTML;
+        if(selected_print !== null) {
+            var divContents = document.getElementById(selected_print).innerHTML;
             var a = window.open('', '', 'height=800, width=1200');
             a.document.write('<html>');
             a.document.write('<head>');
@@ -502,6 +503,10 @@ var scion = {
             setTimeout(function() {
                 a.print();
             }, 2000);
+        }
+        else {
+            $('.buttons-print').click()
+        }
     }
 }
 

@@ -28,3 +28,7 @@ span.activity-date {
 div#activity_log_table_filter {
     float: right;
 }
+
+.buttons-print {
+    display: none;
+}

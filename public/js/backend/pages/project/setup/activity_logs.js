@@ -4,7 +4,7 @@ $(function() {
     module_type = 'custom';
     page_title = 'Activity Log';
 
-    scion.centralized_button(true, true, true, true);
+    scion.centralized_button(true, true, true, false);
     
     scion.create.table(
         modal_content + '_table',  
@@ -26,12 +26,12 @@ $(function() {
 });
 
 function filterDate() {
-    if ($.fn.DataTable.isDataTable('#'+modal_content + '_table')) {
+    if ($.fn.DataTable.isDataTable('#' + modal_content + '_table')) {
         $('#' + modal_content + '_table').DataTable().clear().destroy();
     }
 
     scion.create.table(
-        modal_content + '_table',  
+        modal_content + '_table', 
         module_url + '/get/' + $('#filter_date').val(),
         [
             { data: "action", title: "LOGS", render:function(data, type, row, meta) {
@@ -46,4 +46,8 @@ function filterDate() {
             }}
         ], 'Bfrtip', ['print', 'csv'], false
     );
+}
+
+function printReports() {
+    $('.buttons-print').click();
 }
