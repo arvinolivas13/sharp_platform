@@ -41,12 +41,12 @@
                                                     <div class="access-item-{{$item->module}}">
                                                         <i class="align-middle mr-2 fas fa-fw fa-{{$item->icon}}"></i> <span class="align-middle">{{$item->name}}</span>
                                                     </div>
-                                                    <ul id="{{$item->code}}">
+                                                    <ul>
                                                         @foreach ($item->app_modules as $module)
                                                             <li class="sidebar-item">
                                                                 <div class="row">
                                                                     <div class="col-4">
-                                                                        <span class="app_module_name" disabled>{{$module->name}}</span>
+                                                                        <span class="app_module_name">{{$module->name}}</span>
                                                                     </div>
                                                                     <div class="col-2">
                                                                         <button class="btn-permission" disabled>ADD</button>
@@ -68,7 +68,7 @@
                                                     <div class="access-item-{{$item->module}}">
                                                         <div class="row">
                                                             <div class="col-4">
-                                                                <i class="align-middle mr-2 fas fa-fw fa-{{$item->icon}}"></i> <span>{{$item->name}}</span>
+                                                                <span class="app_module_name"><i class="align-middle mr-2 fas fa-fw fa-{{$item->icon}}"></i> {{$item->name}}</span>
                                                             </div>
                                                             <div class="col-2">
                                                                 <button class="btn-permission" disabled>ADD</button>
