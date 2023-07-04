@@ -63,3 +63,8 @@ span.app_module_name {
     background: #787878;
     color: #fff;
 }
+
+button.btn-permission.selected {
+    background: #26fd66;
+    color: #000;
+}

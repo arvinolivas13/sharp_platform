@@ -21,30 +21,34 @@
 
         <ul class="sidebar-nav" style="overflow-x: hidden;">
             @foreach ($apps as $app)
-                <li class="sidebar-header">{{$app->name}}</li>
-                <li class="sidebar-item">
-                    @foreach ($app->apps as $item)
-                        @if($item->module === 1)
-                            <a href="#{{$item->code}}" data-toggle="collapse" class="sidebar-link collapsed">
-                                <span class="item">
-                                    <i class="align-middle mr-2 fas fa-fw fa-{{$item->icon}}"></i> <span class="align-middle">{{$item->name}}</span>
-                                </span>
-                            </a>
-                            <ul id="{{$item->code}}" class="sidebar-dropdown list-unstyled collapse" data-parent="#sidebar">
-                                <li class="list-title">{{$item->name}}</li>
-                                @foreach ($item->app_modules as $module)
-                                    <li class="sidebar-item"><a class="sidebar-link" href="/project/{{$app->code}}/{{$item->code}}/{{$module->code}}">{{$module->name}}</a></li>
-                                @endforeach
-                            </ul>
-                        @else
-                            <a href="/project/{{$app->code}}/{{$item->code}}" data-toggle="" class="sidebar-link collapsed">
-                                <span class="item">
-                                    <i class="align-middle mr-2 fas fa-fw fa-{{$item->icon}}"></i> <span class="align-middle">{{$item->name}}</span>
-                                </span>
-                            </a>
-                        @endif
-                    @endforeach
-                </li>
+                @if(count($app->apps) !== 0)
+                    <li class="sidebar-header">{{$app->name}}</li>
+                    <li class="sidebar-item">
+                        @foreach ($app->apps as $item)
+                            @if($item->module === 1)
+                                @if(count($item->app_modules) !== 0)
+                                    <a href="#{{$item->code}}" data-toggle="collapse" class="sidebar-link collapsed">
+                                        <span class="item">
+                                            <i class="align-middle mr-2 fas fa-fw fa-{{$item->icon}}"></i> <span class="align-middle">{{$item->name}}</span>
+                                        </span>
+                                    </a>
+                                    <ul id="{{$item->code}}" class="sidebar-dropdown list-unstyled collapse" data-parent="#sidebar">
+                                        <li class="list-title">{{$item->name}}</li>
+                                        @foreach ($item->app_modules as $module)
+                                            <li class="sidebar-item"><a class="sidebar-link" href="/project/{{$app->code}}/{{$item->code}}/{{$module->code}}">{{$module->name}}</a></li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            @else
+                                <a href="/project/{{$app->code}}/{{$item->code}}" data-toggle="" class="sidebar-link collapsed">
+                                    <span class="item">
+                                        <i class="align-middle mr-2 fas fa-fw fa-{{$item->icon}}"></i> <span class="align-middle">{{$item->name}}</span>
+                                    </span>
+                                </a>
+                            @endif
+                        @endforeach
+                    </li>
+                @endif
             @endforeach
         </ul>
     </div>

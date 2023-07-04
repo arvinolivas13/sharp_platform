@@ -13,6 +13,7 @@ class Access extends Model
         'role_id',
         'permission_for',
         'permission_for_id',
+        'enable',
         'add',
         'edit',
         'delete',

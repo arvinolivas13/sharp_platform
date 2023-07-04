@@ -78,6 +78,7 @@ Route::group(['middleware' => ['auth']], function() {
         
         Route::group(['prefix' => 'access'], function() {
             Route::get          ('/get_apps/{id}',                       'AccessController@get_apps'                                     )->name('get');
+            Route::get          ('/get/{role_id}',                       'AccessController@get_access'                                   )->name('get');
         });
 
     });

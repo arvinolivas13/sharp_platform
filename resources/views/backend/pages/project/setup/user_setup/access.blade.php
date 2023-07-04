@@ -1,5 +1,6 @@
 @inject('apptype', 'App\AppType')
 @inject('role', 'App\Role')
+
 @php
     $type = 'full-view';
     $apps = $apptype->with('apps', 'apps.app_modules')->orderBy('sort_no', 'asc')->get();
@@ -43,44 +44,50 @@
                                                     </div>
                                                     <ul>
                                                         @foreach ($item->app_modules as $module)
-                                                            <li class="sidebar-item">
+                                                            <li class="sidebar-item" id="app_module_{{$module->id}}">
                                                                 <div class="row">
-                                                                    <div class="col-4">
+                                                                    <div class="col-7">
                                                                         <span class="app_module_name">{{$module->name}}</span>
                                                                     </div>
-                                                                    <div class="col-2">
-                                                                        <button class="btn-permission" disabled>ADD</button>
+                                                                    <div class="col-1">
+                                                                        <input type="checkbox" class="form-check-input check-permission check-enable" disabled/><label class="form-check-label" for="flexCheckDefault">ENABLE</label>
                                                                     </div>
-                                                                    <div class="col-2">
-                                                                        <button class="btn-permission" disabled>EDIT</button>
+                                                                    <div class="col-1">
+                                                                        <input type="checkbox" class="form-check-input check-permission check-add" disabled/><label class="form-check-label" for="flexCheckDefault">ADD</label>
                                                                     </div>
-                                                                    <div class="col-2">
-                                                                        <button class="btn-permission" disabled>DELETE</button>
+                                                                    <div class="col-1">
+                                                                        <input type="checkbox" class="form-check-input check-permission check-edit" disabled/><label class="form-check-label" for="flexCheckDefault">EDIT</label>
                                                                     </div>
-                                                                    <div class="col-2">
-                                                                        <button class="btn-permission" disabled>PRINT</button>
+                                                                    <div class="col-1">
+                                                                        <input type="checkbox" class="form-check-input check-permission check-delete" disabled/><label class="form-check-label" for="flexCheckDefault">DELETE</label>
+                                                                    </div>
+                                                                    <div class="col-1">
+                                                                        <input type="checkbox" class="form-check-input check-permission check-print" disabled/><label class="form-check-label" for="flexCheckDefault">PRINT</label>
                                                                     </div>
                                                                 </div>
                                                             </li>
                                                         @endforeach
                                                     </ul>
                                                 @else
-                                                    <div class="access-item-{{$item->module}}">
+                                                    <div class="access-item-{{$item->module}}" id="apps_{{$item->id}}">
                                                         <div class="row">
-                                                            <div class="col-4">
-                                                                <span class="app_module_name"><i class="align-middle mr-2 fas fa-fw fa-{{$item->icon}}"></i> {{$item->name}}</span>
+                                                            <div class="col-7">
+                                                                <span class="app_module_name">{{$item->name}}</span>
                                                             </div>
-                                                            <div class="col-2">
-                                                                <button class="btn-permission" disabled>ADD</button>
+                                                            <div class="col-1">
+                                                                <input type="checkbox" class="form-check-input check-permission check-enable" disabled/><label class="form-check-label" for="flexCheckDefault">ENABLE</label>
                                                             </div>
-                                                            <div class="col-2">
-                                                                <button class="btn-permission" disabled>EDIT</button>
+                                                            <div class="col-1">
+                                                                <input type="checkbox" class="form-check-input check-permission check-add" disabled/><label class="form-check-label" for="flexCheckDefault">ADD</label>
                                                             </div>
-                                                            <div class="col-2">
-                                                                <button class="btn-permission" disabled>DELETE</button>
+                                                            <div class="col-1">
+                                                                <input type="checkbox" class="form-check-input check-permission check-edit" disabled/><label class="form-check-label" for="flexCheckDefault">EDIT</label>
                                                             </div>
-                                                            <div class="col-2">
-                                                                <button class="btn-permission" disabled>PRINT</button>
+                                                            <div class="col-1">
+                                                                <input type="checkbox" class="form-check-input check-permission check-delete" disabled/><label class="form-check-label" for="flexCheckDefault">DELETE</label>
+                                                            </div>
+                                                            <div class="col-1">
+                                                                <input type="checkbox" class="form-check-input check-permission check-print" disabled/><label class="form-check-label" for="flexCheckDefault">PRINT</label>
                                                             </div>
                                                         </div>
                                                     </div>

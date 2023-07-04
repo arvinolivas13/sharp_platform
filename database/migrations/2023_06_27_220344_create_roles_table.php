@@ -31,6 +31,15 @@ class CreateRolesTable extends Migration
                 ->references('id')
                 ->on('users');
         });
+        
+        DB::table('roles')->insert([
+            [
+                'name' => 'Super Admin', 
+                'description' => 'a user who has complete access to all objects, folders, role templates, and groups in the system.',
+                'created_by' => 1,
+                'updated_by' => 1
+            ]
+        ]);
     }
 
     /**

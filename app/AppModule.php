@@ -20,4 +20,8 @@ class AppModule extends Model
     public function app() {
         return $this->belongsTo(App::class);
     }
+    
+    public function access() {
+        return $this->belongsTo(Access::class, 'id', 'permission_for_id')->where('accesses.permission_for', 'app_module');
+    }
 }

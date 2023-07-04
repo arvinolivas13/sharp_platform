@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\App;
+use App\Access;
 
 class AccessController extends Controller
 {
@@ -13,5 +14,11 @@ class AccessController extends Controller
             ->addIndexColumn()
             ->make(true);
         }
+    }
+
+    public function get_access($role_id) {
+        $data = Access::where('role_id', $role_id)->get();
+        
+        return response()->json(compact('data'));
     }
 }

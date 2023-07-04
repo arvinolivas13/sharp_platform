@@ -18,6 +18,7 @@ class CreateAccessesTable extends Migration
             $table->unsignedBigInteger('role_id');
             $table->string('permission_for');
             $table->integer('permission_for_id');
+            $table->integer('enable');
             $table->integer('add');
             $table->integer('edit');
             $table->integer('delete');
@@ -40,6 +41,94 @@ class CreateAccessesTable extends Migration
                 ->references('id')
                 ->on('users');
         });
+
+        
+        DB::table('accesses')->insert([
+            [
+                'role_id' => 1, 
+                'permission_for' => 'apps',
+                'permission_for_id' => 3,
+                'enable' => 1,
+                'add' => 1,
+                'edit' => 1,
+                'delete' => 1,
+                'print' => 1,
+                'created_by' => 1,
+                'updated_by' => 1
+            ],
+            [
+                'role_id' => 1, 
+                'permission_for' => 'app_module',
+                'permission_for_id' => 1,
+                'enable' => 1,
+                'add' => 1,
+                'edit' => 1,
+                'delete' => 1,
+                'print' => 1,
+                'created_by' => 1,
+                'updated_by' => 1
+            ],
+            [
+                'role_id' => 1, 
+                'permission_for' => 'app_module',
+                'permission_for_id' => 2,
+                'enable' => 1,
+                'add' => 1,
+                'edit' => 1,
+                'delete' => 1,
+                'print' => 1,
+                'created_by' => 1,
+                'updated_by' => 1
+            ],
+            [
+                'role_id' => 1, 
+                'permission_for' => 'app_module',
+                'permission_for_id' => 3,
+                'enable' => 1,
+                'add' => 1,
+                'edit' => 1,
+                'delete' => 1,
+                'print' => 1,
+                'created_by' => 1,
+                'updated_by' => 1
+            ],
+            [
+                'role_id' => 1, 
+                'permission_for' => 'app_module',
+                'permission_for_id' => 4,
+                'enable' => 1,
+                'add' => 1,
+                'edit' => 1,
+                'delete' => 1,
+                'print' => 1,
+                'created_by' => 1,
+                'updated_by' => 1
+            ],
+            [
+                'role_id' => 1, 
+                'permission_for' => 'app_module',
+                'permission_for_id' => 5,
+                'enable' => 1,
+                'add' => 1,
+                'edit' => 1,
+                'delete' => 1,
+                'print' => 1,
+                'created_by' => 1,
+                'updated_by' => 1
+            ],
+            [
+                'role_id' => 1, 
+                'permission_for' => 'app_module',
+                'permission_for_id' => 6,
+                'enable' => 1,
+                'add' => 1,
+                'edit' => 1,
+                'delete' => 1,
+                'print' => 1,
+                'created_by' => 1,
+                'updated_by' => 1
+            ]
+        ]);
     }
 
     /**
