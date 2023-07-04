@@ -54,8 +54,30 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get          ('/list/{id}',                      'AppModuleController@get_list'                                  )->name('list');
         });
         
+        Route::group(['prefix' => 'user'], function() {
+            Route::get          ('/get',                            'UserController@get'                                            )->name('get');
+            Route::post         ('/save',                           'UserController@store'                                          )->name('save');
+            Route::get          ('/edit/{id}',                      'UserController@edit'                                           )->name('edit');
+            Route::post         ('/update/{id}',                    'UserController@update'                                         )->name('update');
+            Route::post         ('/destroy',                        'UserController@destroy'                                        )->name('delete');
+            Route::get          ('/list/{id}',                      'UserController@get_list'                                       )->name('list');
+        });
+        
+        Route::group(['prefix' => 'role'], function() {
+            Route::get          ('/get',                            'RoleController@get'                                            )->name('get');
+            Route::post         ('/save',                           'RoleController@store'                                          )->name('save');
+            Route::get          ('/edit/{id}',                      'RoleController@edit'                                           )->name('edit');
+            Route::post         ('/update/{id}',                    'RoleController@update'                                         )->name('update');
+            Route::post         ('/destroy',                        'RoleController@destroy'                                        )->name('delete');
+            Route::get          ('/list/{id}',                      'RoleController@get_list'                                       )->name('list');
+        });
+        
         Route::group(['prefix' => 'activity_log'], function() {
             Route::get          ('/get/{date}',                     'Controller@log_get'                                            )->name('get');
+        });
+        
+        Route::group(['prefix' => 'access'], function() {
+            Route::get          ('/get_apps/{id}',                       'AccessController@get_apps'                                     )->name('get');
         });
 
     });

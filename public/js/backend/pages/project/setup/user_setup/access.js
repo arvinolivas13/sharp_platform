@@ -1,26 +1,11 @@
 $(function() {
-    modal_content = 'role';
+    modal_content = 'access';
     module_url = '/actions/' + modal_content;
     module_type = 'custom';
-    page_title = 'Role';
+    page_title = 'Access';
 
-    scion.centralized_button(false, true, true, true);
+    scion.centralized_button(true, true, true, true);
     
-    scion.create.table(
-        modal_content + '_table',  
-        module_url + '/get', 
-        [
-            { data: null, title:"<input type='checkbox' class='multi-checkbox' onclick='scion.table.checkAll()'/>", render: function(data, type, row, meta) {
-                var html = "";
-                html += '<input type="checkbox" class="single-checkbox" value="'+row.id+'" onclick="scion.table.checkOne()"/>';
-                html += '<a href="#" class="align-middle edit" onclick="scion.record.edit('+"'"+module_url+"/edit/', "+ row.id + ' )"><i class="fas fa-pen"></i></a>';
-                return html;
-            }},
-            { data: 'name', title: 'NAME' },
-            { data: 'description', title: 'DESCRIPTION' },
-        ], 'Bfrtip', []
-    );
-
 
     syncData();
 
@@ -67,4 +52,17 @@ function modalHideFunction() {
 
 function customFunc() {}
 
-function syncData() {}
+function syncData() {
+    console.log('helloe');
+}
+
+
+// custom
+function selectRole() {
+    if($('#role').val() !== '') {
+        $('.btn-permission').prop('disabled', false);
+    }
+    else {
+        $('.btn-permission').prop('disabled', true);
+    }
+}

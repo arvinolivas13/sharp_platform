@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('profile_img')->default('default.jpg');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('status');
+            $table->integer('status');
             $table->integer('workstation_id');
             $table->unsignedBigInteger('created_by');
             $table->unsignedBigInteger('updated_by');

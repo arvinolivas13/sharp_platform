@@ -87,8 +87,8 @@ class CreateAppModulesTable extends Migration
                 'updated_by' => 1,
             ],
             [
-                'name' => 'PERMISSION', 
-                'code' => 'permission', 
+                'name' => 'ACCESS', 
+                'code' => 'access', 
                 'app_id' => 2,
                 'sort_no' => 3,
                 'status' => 1,

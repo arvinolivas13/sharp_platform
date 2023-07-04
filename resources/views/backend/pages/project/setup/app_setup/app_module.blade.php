@@ -1,4 +1,6 @@
+
 @extends('backend.master.index')
+
 
 @section('title', 'APP MODULE')
 
@@ -27,7 +29,7 @@
     <div class="sc-modal-dialog">
         <div class="sc-modal-header">
             <span class="sc-title-bar"></span>
-            <span class="sc-close" onclick="scion.create.sc_modal('apps_form').hide('all', modalHideFunction)"><i class="fas fa-times"></i></span>
+            <span class="sc-close" onclick="scion.create.sc_modal('app_module_form').hide('all', modalHideFunction)"><i class="fas fa-times"></i></span>
         </div>
         <div class="sc-modal-body">
             <form id="app_moduleForm" method="post" class="form-record">

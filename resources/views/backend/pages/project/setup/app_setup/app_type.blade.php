@@ -27,7 +27,7 @@
     <div class="sc-modal-dialog">
         <div class="sc-modal-header">
             <span class="sc-title-bar"></span>
-            <span class="sc-close" onclick="scion.create.sc_modal('apps_form').hide('all', modalHideFunction)"><i class="fas fa-times"></i></span>
+            <span class="sc-close" onclick="scion.create.sc_modal('app_type_form').hide('all', modalHideFunction)"><i class="fas fa-times"></i></span>
         </div>
         <div class="sc-modal-body">
             <form id="app_typeForm" method="post" class="form-record">

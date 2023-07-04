@@ -5,13 +5,10 @@ namespace App\Http\Controllers;
 use App\User;
 use Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
-    public function index()
-    {
-        return view('backend.pages.setup.user');
-    }
 
     public function get() {
         if(request()->ajax()) {
@@ -25,15 +22,18 @@ class UserController extends Controller
     {
         $department = $request->validate([
             'firstname' => ['required'],
-            'middlename',
             'lastname' => ['required'],
-            'suffix' => ['required'],
             'email' => ['required'],
-            'profile_img' => ['required'],
             'status' => ['required'],
         ]);
 
-        $request->request->add(['workstation_id' => Auth::user()->workstation_id, 'created_by' => Auth::user()->id, 'password' => '$2y$10$DcfXc7JdR58QvunoINadbe/8L.ur29S0fTxcyCH0PJPpUvBhrtmd.']);
+        $request->request->add([
+            'workstation_id' => Auth::user()->workstation_id, 
+            'created_by' => Auth::user()->id, 
+            'updated_by' => Auth::user()->id, 
+            'password' => Hash::make('P@ssw0rd')
+        ]);
+
         User::create($request->all());
 
         return redirect()->back()->with('success','Successfully Added');
@@ -52,11 +52,16 @@ class UserController extends Controller
         return response()->json(['Successfully Updated']);
     }
     
-    public function destroy($id)
+    
+    public function destroy(Request $request)
     {
-        $deparment_destroy = User::find($id);
-        $deparment_destroy->delete();
-        return redirect()->back()->with('success','Successfully Deleted!');
+        $record = $request->data;
+
+        foreach($record as $item) {
+            User::find($item)->delete();
+        }
+        
+        return 'Record Deleted';
     }
 
 }
