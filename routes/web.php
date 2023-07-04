@@ -13,7 +13,7 @@ use App\Events\FormSubmitted;
 |
 */
 Route::group(['middleware' => ['auth']], function() {
-    
+
     Route::get('/project', function () {
         return view('backend.pages.dashboard');
     });
@@ -26,7 +26,6 @@ Route::group(['middleware' => ['auth']], function() {
 
     // Controller action
     Route::group(['prefix' => 'actions'], function() {
-
         Route::group(['prefix' => 'app_type'], function() {
             Route::get          ('/get',                            'AppTypeController@get'                                         )->name('get');
             Route::post         ('/save',                           'AppTypeController@store'                                       )->name('save');
@@ -35,7 +34,7 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post         ('/destroy',                        'AppTypeController@destroy'                                     )->name('delete');
             Route::get          ('/list/{id}',                      'AppTypeController@get_list'                                    )->name('list');
         });
-        
+
         Route::group(['prefix' => 'app'], function() {
             Route::get          ('/get',                            'AppController@get'                                             )->name('get');
             Route::post         ('/save',                           'AppController@store'                                           )->name('save');
@@ -44,7 +43,7 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post         ('/destroy',                        'AppController@destroy'                                         )->name('delete');
             Route::get          ('/list/{id}',                      'AppController@get_list'                                        )->name('list');
         });
-        
+
         Route::group(['prefix' => 'app_module'], function() {
             Route::get          ('/get',                            'AppModuleController@get'                                       )->name('get');
             Route::post         ('/save',                           'AppModuleController@store'                                     )->name('save');
@@ -72,6 +71,7 @@ Route::group(['middleware' => ['auth']], function() {
             Route::get          ('/list/{id}',                      'RoleController@get_list'                                       )->name('list');
         });
         
+
         Route::group(['prefix' => 'activity_log'], function() {
             Route::get          ('/get/{date}',                     'Controller@log_get'                                            )->name('get');
         });
@@ -81,7 +81,7 @@ Route::group(['middleware' => ['auth']], function() {
         });
 
     });
-    
+
     Route::group(['prefix' => '/payroll'], function (){
         Route::get          ('/',                                'PayrollController@index'                                      )->name('payroll');
 
@@ -93,7 +93,7 @@ Route::group(['middleware' => ['auth']], function() {
             Route::post         ('/update/{id}',                 'LeaveTypeController@update'                                   )->name('update_leave_type');
             Route::post         ('/destroy',                     'LeaveTypeController@destroy'                                  )->name('destroy_position');
         });
-        
+
     });
 
 });
