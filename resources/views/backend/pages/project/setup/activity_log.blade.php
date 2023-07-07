@@ -13,9 +13,6 @@
             @include('backend.partial.flash-message')
             <div class="col-12">
                 <div class="card-body">
-                    <div class="filter">
-                        <input type="date" class="form-control" id="filter_date" value="{{date('Y-m-d')}}" onchange="filterDate()"/>
-                    </div>
                     <table id="activity_log_table" class="table table-striped" style="width:100%">
                     </table>
                 </div>
@@ -32,7 +29,7 @@
 
 @section('scripts')
 <script src="//cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-<script src="/js/backend/pages/project/setup/activity_logs.js"></script>
+<script src="/js/backend/pages/project/setup/activity_log.js"></script>
 @endsection
 
 @section('styles')

@@ -73,7 +73,7 @@ Route::group(['middleware' => ['auth']], function() {
         
 
         Route::group(['prefix' => 'activity_log'], function() {
-            Route::get          ('/get/{date}',                     'Controller@log_get'                                            )->name('get');
+            Route::get          ('/get',                     'Controller@log_get'                                            )->name('get');
         });
         
         Route::group(['prefix' => 'access'], function() {

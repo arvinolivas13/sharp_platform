@@ -43,7 +43,9 @@ class AppTypeController extends Controller
     
     public function edit($id)
     {
-        $appType = AppType::where('id', $id)->orderBy('id')->firstOrFail();
+        $appType = AppType::with('user')->where('id', $id)->orderBy('id')->firstOrFail();
+        $this->setup->set_log('App Type Viewed', '"'.$appType->user->firstname.' '.($appType->user->middlename!==null&&$appType->user->middlename!==''?$appType->user->middlename.' ':'').$appType->user->lastname.'" viewed the record ID: "'.$id.'"', request()->ip());
+        
         return response()->json(compact('appType'));
     }
 
@@ -51,6 +53,9 @@ class AppTypeController extends Controller
     {
         $request['updated_by'] = Auth::user()->id;
         AppType::find($id)->update($request->all());
+
+        $this->setup->set_log('App Type Updated', '"'.Auth::user()->firstname.' '.(Auth::user()->middlename!==null&&Auth::user()->middlename!==''?Auth::user()->middlename.' ':'').Auth::user()->lastname.'" update the record with the ID: "'.$id.'"', request()->ip());
+
         return "Record Saved";
     }
 
@@ -60,6 +65,8 @@ class AppTypeController extends Controller
 
         foreach($record as $item) {
             AppType::find($item)->delete();
+            
+            $this->setup->set_log('App Type Deleted', '"'.Auth::user()->firstname.' '.(Auth::user()->middlename!==null&&Auth::user()->middlename!==''?Auth::user()->middlename.' ':'').Auth::user()->lastname.'" delete the record with the ID: "'.$item.'"', request()->ip());
         }
         
         return 'Record Deleted';

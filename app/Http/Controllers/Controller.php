@@ -41,9 +41,9 @@ class Controller extends BaseController
         return "Logs Added";
     }
 
-    public function log_get($date) {
+    public function log_get() {
         if(request()->ajax()) {
-            return datatables()->of(ActivityLogs::where('created_at', '>=', $date.' 00:01')->where('created_at', '<=', $date.' 23:59')->orderBy('created_at', 'desc')->get())
+            return datatables()->of(ActivityLogs::with('user')->orderBy('created_at', 'desc')->get())
             ->addIndexColumn()
             ->make(true);
         }

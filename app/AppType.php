@@ -23,4 +23,8 @@ class AppType extends Model
     public function apps() {
         return $this->hasMany(App::class, 'app_type_id', 'id');
     }
+
+    public function user() {
+        return $this->belongsTo(User::class, 'created_by', 'id');
+    }
 }

@@ -39,7 +39,7 @@ class CreateAppTypesTable extends Migration
             [
                 'name' => 'MAINTENANCE', 
                 'code' => 'maintenance', 
-                'status' => 0,
+                'status' => 1,
                 'sort_no' => 1,
                 'created_by' => 1,
                 'updated_by' => 1,
@@ -47,7 +47,7 @@ class CreateAppTypesTable extends Migration
             [
                 'name' => 'TRANSACTION', 
                 'code' => 'transaction', 
-                'status' => 0,
+                'status' => 1,
                 'sort_no' => 2,
                 'created_by' => 1,
                 'updated_by' => 1,
@@ -55,7 +55,7 @@ class CreateAppTypesTable extends Migration
             [
                 'name' => 'SETUP', 
                 'code' => 'setup', 
-                'status' => 0,
+                'status' => 1,
                 'sort_no' => 3,
                 'created_by' => 1,
                 'updated_by' => 1,
