@@ -33,24 +33,32 @@ li.list-item>ul {
 li.list-header {
     padding: 10px 15px;
     font-size: 15px;
-    font-weight: bold;
-    background: #3f3f3f;
-    color: #fff;
+    font-weight: 100;
+    background: #eeeeee;
+    color: #3f3f3f;
     margin-top: 5px;
 }
 
-.access-item-1 {
+.access-sidebar-item {
     padding: 10px;
-    background: #787878;
-    color: #fff;
+    border-bottom: 1px solid #ccc;
+    color: #3f3f3f;
+}
+
+.access-sidebar-item:nth-child(2n) {
+    background: #f4f4f4;
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    color: #3f3f3f;
+}
+
+span.app_module_name {
+    font-weight: bold;
 }
 
 li.list-item>ul {
     list-style: none;
     margin: 0px;
-    padding: 10px;
-    background: #fff;
-    border: 1px solid #ccc;
 }
 
 span.app_module_name {

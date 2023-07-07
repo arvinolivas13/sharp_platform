@@ -4,6 +4,7 @@ var record_id = null;
 var modal_content = null;
 var module_url = null;
 var module_type = null;
+var project_type = null;
 var actions = null;
 var _token = $('meta[name="csrf-token"]').attr('content');
 
@@ -510,9 +511,33 @@ var scion = {
     }
 }
 
-
 $('body').delegate('form input[type="text"]:not(.lowercase), form textarea', 'keyup', function() {
     this.value = this.value.toUpperCase();
 }).delegate('form', 'submit', function() {
     event.preventDefault();
 });;
+
+$(function() {
+    $.post('/actions/access/get_permission', { _token: _token, project_type: project_type, project_code: modal_content }).done(function(response) {
+        console.log(response);
+        if(response.access.add === 0) {
+            $('#nw').remove();
+        }
+        if(response.access.edit === 0) {
+            $('.dataTable a.edit').remove();
+        }
+        
+        if(response.access.add === 0 && response.access.edit === 0) {
+            $('#sv').remove();
+        }
+
+        if(response.access.delete === 0) {
+            $('#dlt').remove();
+        }
+
+        if(response.access.print === 0) {
+            $('#prnt').remove();
+        }
+        $('.action-button button, .dataTable a.edit').css('display','inline-block');
+    });
+});

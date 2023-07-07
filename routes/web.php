@@ -77,25 +77,19 @@ Route::group(['middleware' => ['auth']], function() {
         });
         
         Route::group(['prefix' => 'access'], function() {
-            Route::get          ('/get_apps/{id}',                       'AccessController@get_apps'                                     )->name('get');
-            Route::get          ('/get/{role_id}',                       'AccessController@get_access'                                   )->name('get');
+            Route::get          ('/get_apps/{id}',                  'AccessController@get_apps'                                     )->name('get');
+            Route::get          ('/get/{role_id}',                  'AccessController@get_access'                                   )->name('get');
+            Route::post         ('/save',                           'AccessController@store'                                        )->name('save');
+            Route::post         ('/get_permission',                 'Controller@getPermissionAccess'                                )->name('get');
+        });
+        
+        Route::group(['prefix' => 'role_setup'], function() {
+            Route::post         ('/save',                           'RoleSetupController@store'                                     )->name('save');
+            Route::get          ('/list/{id}',                      'RoleSetupController@get_list'                                  )->name('list');
         });
 
     });
 
-    Route::group(['prefix' => '/payroll'], function (){
-        Route::get          ('/',                                'PayrollController@index'                                      )->name('payroll');
-
-        Route::group(['prefix' => '/leave-type'], function (){
-            Route::get          ('/',                            'LeaveTypeController@index'                                    )->name('leave_type');
-            Route::get          ('/get',                         'LeaveTypeController@get'                                      )->name('get_leave_type');
-            Route::post         ('/save',                        'LeaveTypeController@store'                                    )->name('save_leave_type');
-            Route::get          ('/edit/{id}',                   'LeaveTypeController@edit'                                     )->name('edit_leave_type');
-            Route::post         ('/update/{id}',                 'LeaveTypeController@update'                                   )->name('update_leave_type');
-            Route::post         ('/destroy',                     'LeaveTypeController@destroy'                                  )->name('destroy_position');
-        });
-
-    });
 
 });
 

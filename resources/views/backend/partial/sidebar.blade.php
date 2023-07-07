@@ -1,9 +1,13 @@
 @inject('apptype', 'App\AppType')
 
+{{-- ->whereHas('apps.app_modules.access', function($query){
+    $query->where('role_id', auth()->user()->access->role->id);
+}) --}}
 @php
-    $apps = $apptype->with('apps', 'apps.app_modules')->orderBy('sort_no', 'asc')->get();
+    $apps = $apptype->orderBy('sort_no', 'asc')->get();
 @endphp
-{{-- {{$apps}} --}}
+<br>
+
 <nav id="sidebar" class="sidebar">
     <div class="sidebar-content">
 
@@ -27,24 +31,30 @@
                         @foreach ($app->apps as $item)
                             @if($item->module === 1)
                                 @if(count($item->app_modules) !== 0)
-                                    <a href="#{{$item->code}}" data-toggle="collapse" class="sidebar-link collapsed">
-                                        <span class="item">
-                                            <i class="align-middle mr-2 fas fa-fw fa-{{$item->icon}}"></i> <span class="align-middle">{{$item->name}}</span>
-                                        </span>
-                                    </a>
-                                    <ul id="{{$item->code}}" class="sidebar-dropdown list-unstyled collapse" data-parent="#sidebar">
-                                        <li class="list-title">{{$item->name}}</li>
-                                        @foreach ($item->app_modules as $module)
-                                            <li class="sidebar-item"><a class="sidebar-link" href="/project/{{$app->code}}/{{$item->code}}/{{$module->code}}">{{$module->name}}</a></li>
-                                        @endforeach
-                                    </ul>
+                                    @if($item->access->enable === 1)
+                                        <a href="#{{$item->code}}" data-toggle="collapse" class="sidebar-link collapsed">
+                                            <span class="item">
+                                                <i class="align-middle mr-2 fas fa-fw fa-{{$item->icon}}"></i> <span class="align-middle">{{$item->name}}</span>
+                                            </span>
+                                        </a>
+                                        <ul id="{{$item->code}}" class="sidebar-dropdown list-unstyled collapse" data-parent="#sidebar">
+                                            <li class="list-title">{{$item->name}}</li>
+                                            @foreach ($item->app_modules as $module)
+                                                @if($module->access->enable === 1)
+                                                    <li class="sidebar-item"><a class="sidebar-link" href="/project/{{$app->code}}/{{$item->code}}/{{$module->code}}">{{$module->name}}</a></li>
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                    @endif
                                 @endif
                             @else
+                                @if($item->access->enable === 1)
                                 <a href="/project/{{$app->code}}/{{$item->code}}" data-toggle="" class="sidebar-link collapsed">
                                     <span class="item">
                                         <i class="align-middle mr-2 fas fa-fw fa-{{$item->icon}}"></i> <span class="align-middle">{{$item->name}}</span>
                                     </span>
                                 </a>
+                                @endif
                             @endif
                         @endforeach
                     </li>

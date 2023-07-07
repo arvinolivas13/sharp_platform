@@ -29,4 +29,8 @@ class App extends Model
     public function app_type() {
         return $this->belongsTo(AppType::class);
     }
+    
+    public function access() {
+        return $this->belongsTo(Access::class, 'id', 'permission_for_id')->where('accesses.permission_for', 'apps')->where('accesses.role_id', auth()->user()->access->role_id);
+    }
 }

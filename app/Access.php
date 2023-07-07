@@ -17,6 +17,9 @@ class Access extends Model
         'add',
         'edit',
         'delete',
-        'print'
+        'print',
+        'created_by',
+        'updated_by',
+        'deleted_by'
     ];
 }

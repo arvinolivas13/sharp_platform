@@ -10,6 +10,9 @@ use Illuminate\Http\Request;
 use Jenssegers\Agent\Facades\Agent;
 use Auth;
 use App\ActivityLogs;
+use App\Access;
+use App\App;
+use App\AppModule;
 
 class Controller extends BaseController
 {
@@ -44,6 +47,21 @@ class Controller extends BaseController
             ->addIndexColumn()
             ->make(true);
         }
+    }
+
+    public function getPermissionAccess(Request $request) {
+        $role = Auth::user()->access->role_id;
+        
+        if($request->project_type === "apps") {
+            $project_id = App::where('code', $request->project_code)->first()->id;
+        }
+        else if($request->project_type === "app_module") {
+            $project_id = AppModule::where('code', $request->project_code)->first()->id;
+        }
+
+        $access = Access::where('role_id', $role)->where('permission_for', $request->project_type)->where('permission_for_id', $project_id)->firstOrFail();
+
+        return response()->json(compact('access', 'project_id'));
     }
 
 }

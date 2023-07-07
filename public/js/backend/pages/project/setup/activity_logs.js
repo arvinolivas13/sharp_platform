@@ -1,4 +1,5 @@
 $(function() {
+    project_type = 'apps';
     modal_content = 'activity_log';
     module_url = '/actions/' + modal_content;
     module_type = 'custom';

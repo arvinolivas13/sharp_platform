@@ -60,10 +60,10 @@ class RoleController extends Controller
         $data = null;
 
         if($id === "all") {
-            $data = Role::where('status', 1)->get();
+            $data = Role::get();
         }
         else {
-            $data = Role::where('id', $id)->where('status', 1)->get();
+            $data = Role::where('id', $id)->get();
         }
         
         return response()->json(compact('data'));

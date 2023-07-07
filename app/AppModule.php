@@ -22,6 +22,6 @@ class AppModule extends Model
     }
     
     public function access() {
-        return $this->belongsTo(Access::class, 'id', 'permission_for_id')->where('accesses.permission_for', 'app_module');
+        return $this->belongsTo(Access::class, 'id', 'permission_for_id')->where('accesses.permission_for', 'app_module')->where('accesses.role_id', auth()->user()->access->role_id);
     }
 }

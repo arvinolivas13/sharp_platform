@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\App;
+use Auth;
 use App\Access;
 
 class AccessController extends Controller
@@ -20,5 +21,25 @@ class AccessController extends Controller
         $data = Access::where('role_id', $role_id)->get();
         
         return response()->json(compact('data'));
+    }
+
+    public function store(Request $request) {
+        $data = $request->data;
+
+        foreach($data as $item) {
+            $record = Access::where('role_id', $item['role_id'])->where('permission_for', $item['permission_for'])->where('permission_for_id', $item['permission_for_id'])->count();
+            if($record === 0) {
+                
+                $item['created_by'] = Auth::user()->id;
+                $item['updated_by'] = Auth::user()->id;
+                
+                Access::create($item);
+            }
+            else {
+                $item['updated_by'] = Auth::user()->id;
+                Access::where('role_id', $item['role_id'])->where('permission_for', $item['permission_for'])->where('permission_for_id', $item['permission_for_id'])->update($item);
+            }
+        }
+        
     }
 }

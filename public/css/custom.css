@@ -32,7 +32,7 @@ body, h1, h2, h3, h4, h5, h6, a, span, input {
 }
 
 .main {
-    background: #fff;
+    background: transparent;
 }
 
 .container-fluid {
@@ -127,6 +127,7 @@ a.sidebar-link .item {
     width: 100px;
     padding: 10px;
     z-index: 1001;
+    box-shadow: none;
 }
 
 .sidebar-content {
@@ -445,9 +446,15 @@ td.with-bg {
     text-transform: uppercase;
 }
 
-.dataTable a.edit,
 .dataTable a.delete,
 .single-checkbox {
+    padding: 5px;
+    display: inline-block;
+    color: #646464;
+    vertical-align: middle;
+}
+
+.dataTable a.edit {
     padding: 5px;
     display: inline-block;
     color: #646464;
@@ -637,7 +644,11 @@ main.content {
     border-radius: 3px;
     transition: .3s;
     margin-left: 3px;
+    display: none;
+    vertical-align: middle;
 }
+
+
 
 .action-button button i {
     margin-right: 5px;

@@ -47,6 +47,30 @@ class CreateAccessesTable extends Migration
             [
                 'role_id' => 1, 
                 'permission_for' => 'apps',
+                'permission_for_id' => 1,
+                'enable' => 1,
+                'add' => 0,
+                'edit' => 0,
+                'delete' => 0,
+                'print' => 0,
+                'created_by' => 1,
+                'updated_by' => 1
+            ],
+            [
+                'role_id' => 1, 
+                'permission_for' => 'apps',
+                'permission_for_id' => 2,
+                'enable' => 1,
+                'add' => 0,
+                'edit' => 0,
+                'delete' => 0,
+                'print' => 0,
+                'created_by' => 1,
+                'updated_by' => 1
+            ],
+            [
+                'role_id' => 1, 
+                'permission_for' => 'apps',
                 'permission_for_id' => 3,
                 'enable' => 1,
                 'add' => 1,
