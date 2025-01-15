@@ -11,15 +11,11 @@
 @section('content')
 <div class="row">
     <div class="col-md-12">
-        <div class="card">
             @include('backend.partial.flash-message')
             <div class="col-12">
-                <div class="card-body">
-                    <table id="app_module_table" class="table table-striped" style="width:100%">
-                    </table>
-                </div>
+                <table id="app_module_table" class="table table-striped" style="width:100%">
+                </table>
             </div>
-        </div>
     </div>
 </div>
 

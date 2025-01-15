@@ -9,13 +9,9 @@
 @section('content')
 <div class="row">
     <div class="col-md-12">
-        <div class="card">
-            @include('backend.partial.flash-message')
-            <div class="col-12">
-                <div class="card-body">
-                    <table id="app_table" class="table table-striped" style="width:100%"></table>
-                </div>
-            </div>
+        @include('backend.partial.flash-message')
+        <div class="col-12">
+                <table id="app_table" class="table table-striped" style="width:100%"></table>
         </div>
     </div>
 </div>

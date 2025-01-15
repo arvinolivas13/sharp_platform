@@ -90,7 +90,10 @@
                 @yield('sc-modal')
             </div>
             <div class="row" style="height:calc(100% - 180px);padding: 0 18px;">
-                @if(isset($type))
+                <div class="col-xl-12" style="height:100%; overflow-y: auto;">
+                    @yield('content')
+                </div>
+                {{-- @if(isset($type))
                     @if($type === "full-view")
                     <div class="col-xl-12" style="height:100%; overflow-y: auto;">
                         @yield('content')
@@ -119,7 +122,7 @@
                             @yield('right-content')
                         </div>
                     </div>
-                @endif
+                @endif --}}
             </div>
             @include('backend.partial.footer')
         </div>
